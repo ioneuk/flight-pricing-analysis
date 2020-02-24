@@ -1,2 +1,6 @@
 boto3==1.11.9
 requests==2.22.0
+botocore==1.14.9
+beautifulsoup4==4.8.2
+selenium==3.141.0
+chromedriver-py==80.0.3987.16
