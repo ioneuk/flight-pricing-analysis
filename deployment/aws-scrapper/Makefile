@@ -4,7 +4,7 @@ clean:
 
 fetch-dependencies:
 	mkdir -p bin/
- 
+
 	# Get chromedriver
 	curl -SL https://chromedriver.storage.googleapis.com/2.37/chromedriver_linux64.zip > chromedriver.zip
 	unzip chromedriver.zip -d bin/

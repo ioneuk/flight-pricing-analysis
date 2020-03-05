@@ -1,6 +1,12 @@
-boto3==1.11.9
-requests==2.22.0
-botocore==1.14.9
 beautifulsoup4==4.8.2
-selenium==3.141.0
+boto3==1.11.9
+botocore==1.14.9
 chromedriver-py==80.0.3987.16
+flake8==3.7.9
+flake8-bugbear==20.1.4
+flake8-builtins==1.4.2
+flake8-debugger==3.2.1
+flake8-isort==2.8.0
+pre-commit==2.1.1
+requests==2.22.0
+selenium==3.141.0

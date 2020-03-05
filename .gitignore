@@ -18,4 +18,4 @@ deployment_function/*
 
 **/.ipynb_checkpoints/*
 **/catboost_info/*
-./scrapper/*
+data-collection/*
