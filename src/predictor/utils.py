@@ -2,7 +2,7 @@ from typing import List
 
 import holidays
 import pandas as pd
-from pandas import DataFrame
+from pandas import DataFrame, Series
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.preprocessing import LabelEncoder
 
@@ -11,10 +11,10 @@ class DateTransformer(BaseEstimator, TransformerMixin):
     def __init__(self) -> None:
         return
 
-    def fit(self) -> DataFrame:
+    def fit(self, x: DataFrame, y: Series = None) -> DataFrame:
         return self
 
-    def transform(self, x: DataFrame) -> DataFrame:
+    def transform(self, x: DataFrame, y: Series = None) -> DataFrame:
         x.loc[:, "measure_date"] = pd.to_datetime(pd.to_datetime(x["date_time"]).dt.date)
         x.loc[:, "departure_date"] = pd.to_datetime(pd.to_datetime(x["departure_date_time"]).dt.date)
         x.loc[:, "departure_hour"] = pd.to_datetime(x["departure_date_time"]).dt.hour
@@ -35,18 +35,18 @@ class DateTransformer(BaseEstimator, TransformerMixin):
         return x
 
     def fit_transform(self, x: DataFrame, y: DataFrame = None) -> DataFrame:
-        return self.fit().transform(x)
+        return self.fit(x, y).transform(x)
 
 
 class MultiColumnLabelEncoder(BaseEstimator, TransformerMixin):
     def __init__(self, columns: List[str] = []) -> None:
         self.columns = columns
 
-    def fit(self) -> DataFrame:
+    def fit(self, x: DataFrame, y: Series = None) -> DataFrame:
         return self
 
-    def transform(self, df: DataFrame) -> DataFrame:
-        output = df.copy()
+    def transform(self, x: DataFrame, y: Series = None) -> DataFrame:
+        output = x.copy()
         if self.columns is not None:
             for col in self.columns:
                 output[col] = LabelEncoder().fit_transform(output[col].astype(str))
@@ -58,13 +58,13 @@ class ColumnSelector(BaseEstimator, TransformerMixin):
     def __init__(self, columns: List[str] = []) -> None:
         self.columns = columns
 
-    def fit(self) -> DataFrame:
+    def fit(self, x: DataFrame, y: Series = None) -> DataFrame:
         return self
 
-    def transform(self, x: DataFrame) -> DataFrame:
+    def transform(self, x: DataFrame, y: Series = None) -> DataFrame:
         if self.columns is not None:
             return x[self.columns]
         return x
 
-    def fit_transform(self, x: DataFrame, y: DataFrame = None) -> DataFrame:
-        return self.fit().transform(x, y)
+    def fit_transform(self, x: DataFrame, y: Series = None) -> DataFrame:
+        return self.fit(x, y).transform(x, y)
