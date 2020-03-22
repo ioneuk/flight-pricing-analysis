@@ -15,7 +15,9 @@ bin/
 .aws-sam/*
 deployment_function/*
 *.zip
+**/*.pkl
 
 **/.ipynb_checkpoints/*
 **/catboost_info/*
+**/.mypy_cache/*
 data-collection/*
