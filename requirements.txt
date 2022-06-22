@@ -10,7 +10,7 @@ Flask-RESTful==0.3.8
 Flask-SQLAlchemy==2.4.1
 holidays==0.10.1
 joblib==0.14.1
-numpy==1.18.1
+numpy==1.22.0
 pandas==1.0.1
 pre-commit==2.1.1
 PyMySQL==0.9.3
